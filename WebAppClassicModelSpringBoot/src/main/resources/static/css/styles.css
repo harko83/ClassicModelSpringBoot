@@ -1,0 +1,258 @@
+/* REMOVE BORDER OF PAGE */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* Police a charger */
+@font-face {
+    font-family: 'freebooter_scriptregular';
+    src: url('fonts/freebooterscript-webfont.eot');
+    src: url('../fonts/freebooterscript-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/freebooterscript-webfont.woff') format('woff'),
+        url('../fonts/freebooterscript-webfont.ttf') format('truetype'),
+        url('../fonts/freebooterscript-webfont.svg#freebooter_scriptregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* BARRE DE NAVIGATION */
+.menu{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-height: 7vh;
+	background-color: #cac1c2;
+	font-family: freebooter_scriptregular, Impact, "Arial Black", Arial, Verdana, Sans-Serif;
+}
+
+.logo {
+    text-shadow: 2px 2px #8FB0A9;
+    margin: auto;
+    color: #983642;
+    font: bold;
+    font-size: 60px;
+    letter-spacing: 5px;
+    text-decoration: none;
+}
+
+.nav-links{
+	display: flex;
+	justify-content: space-around;
+	width: 35%;
+}
+
+.nav-links li{
+	list-style: none;
+}
+
+.nav-links button{
+	background-color: #cac1c2;
+	color: black;
+	border: 2px solid #555555;
+}
+
+.nav-links button:hover{
+	background-color: #983642;
+}
+
+.nav-links a{
+	color: #983642;
+	text-decoration: none;
+	letter-spacing: 3px;
+	font-weight: bold;
+	font-size: 22px;
+}
+
+.burger{
+	display: none;
+}
+
+.burger div{
+	width: 25px;
+	height: 3px;
+	background-color: rgb(226,226,226);
+	margin: 5px;
+	transition: all 0.3s ease;
+}
+
+body {
+    background-color: #F2D8B3;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+#ProductContainer {
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    /* border: 2px solid #444; */
+}
+
+p {
+    font-size: 1.3em;
+}
+
+#ProductContainer {
+	overflow : hidden;
+	margin : 20px auto;
+	padding : 10px 10px;
+}
+
+.sale-item {
+	display: flex;
+	flex: 1 1 auto;
+	width: 20%;
+	padding : 10px;
+	margin : 20px;
+	background: #cac1c2;
+	overflow : auto;
+	text-align: justify;
+}
+
+.sale-item > img {
+	order: -1;
+	align-self: center;
+}
+
+.sale-item > a {
+	margin-top: auto;
+}
+
+a.button{
+  border-radius: 1rem;
+  text-decoration: none;
+  background-color: white;
+  color: #333333;
+  padding: 0.5rem;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+	
+  display: block;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+
+}
+
+.leftSide{
+	width: 10%;
+	float: left;
+}
+.leftSide input{
+	width: 70%;
+	padding: 20px;
+}
+.leftSide h3{
+	color: #983642;
+	letter-spacing: 2px;
+	font-weight: bold;
+	font-size: 25px;
+	font-family: freebooter_scriptregular, Impact, "Arial Black", Arial, Verdana, Sans-Serif;
+	padding: 10px;
+}
+
+/* Flexbox stuff */
+@media screen and (max-width:1024px){
+	.nav-links{
+		width: 70%;
+	}
+	.sale-item {
+        flex: 0 1 calc(29%);
+    }
+    .leftSide input{
+	width: 90%;
+	padding: 14px;
+	}
+}
+
+
+@media screen and (max-width:960px){
+	body{
+		overflow-x: hidden; 
+	}
+	.nav-links{
+		position: absolute;
+		right: 0px;
+		height: 92vh;
+		top: 8vh;
+		background-color: #cac1c2;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 30%;
+		transform: translateX(100%);
+		transition: transform 0.5s ease-in;
+	}
+	.nav-links li{
+		opacity: 1;
+	}
+	.burger{
+		display: block;
+		cursor: pointer;
+	}
+	.sale-item {
+        flex: 0 1 calc(45%);
+    }
+    .leftSide input{
+	width: 100%;
+	padding: 10px;
+	}
+	.leftSide h3{
+	width: 70%;
+	}
+}
+
+@media screen and (max-width:768px){
+	#ProductContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+	.sale-item {
+        flex: 0 1 calc(100%);
+    }	
+    .leftSide{
+    width: 20%;
+    }
+    .leftSide input{
+	width: 100%;
+	padding: 7px;
+	}
+	.leftSide h3{
+	font-size: 80%;
+	}
+}
+
+.nav-active{
+	transform: translateX(0%);
+}
+
+@keyframes navLinkFade{
+	from{
+		opacity: 0;
+		transform: translateX(50px);
+	}
+	to{
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+
+.toggle .line1{
+	transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+	opacity: 0;
+}
+.toggle .line3{
+	transform: rotate(45deg) translate(-5px,-6px);
+}
+
+
