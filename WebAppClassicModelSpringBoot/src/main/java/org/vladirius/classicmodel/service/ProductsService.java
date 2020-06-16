@@ -1,4 +1,4 @@
-package org.vladirius.classicmodel.web.services;
+package org.vladirius.classicmodel.service;
 
 import java.util.ArrayList;
 import java.util.List;

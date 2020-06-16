@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.vladirius.classicmodel.data.models.CustomersEntity;
-import org.vladirius.classicmodel.web.services.CustomersService;
+import org.vladirius.classicmodel.service.CustomersService;
 
 @RestController
 public class CustomersController {

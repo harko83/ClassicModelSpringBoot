@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.vladirius.classicmodel.data.models.OfficesEntity;
-import org.vladirius.classicmodel.web.services.OfficesServices;
+import org.vladirius.classicmodel.service.OfficesServices;
 
 @RestController
 public class OfficesController {

@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.vladirius.classicmodel.data.models.ProductsEntity;
-import org.vladirius.classicmodel.web.services.ProductsService;
+import org.vladirius.classicmodel.service.ProductsService;
 
 @RestController
-public class ProductsController {
+public class ProductsRestController {
 	@Autowired
 	private ProductsService service;
 
-	@RequestMapping("/products")
+	@RequestMapping("/rest/products")
 	public List<ProductsEntity> getProducts(){
 		return service.getProducts();
 	}

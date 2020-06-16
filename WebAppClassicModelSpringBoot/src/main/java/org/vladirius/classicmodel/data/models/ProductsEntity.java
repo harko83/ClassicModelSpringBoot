@@ -55,6 +55,8 @@ public class ProductsEntity implements Serializable {
 	@Column(name = "MSRP")
 	private double MSRP;
 
+	public ProductsEntity() {}
+	
 	public String getProductCode() {
 		return productCode;
 	}

@@ -12,25 +12,27 @@
 <body id="BodyContainer">
 
 	<%@ include file="menu.jsp"%>
-
+	
+	<p> TEST PAGE CATALOGUE</p>
+	
 	<section id="ProductContainer">
-		<c:forEach items="${products}" var="product">
+		<c:forEach items="${products}" var="products">
 				<ul class="sale-item">
 					<li class="cards__item">
 						<div class="card">
-							<img src="img/photos/Products/${product.getProductCode()}.jpg" width="100%"
-						alt="${product.getProductName()}">
+							<img src="img/photos/Products/${products.getProductCode()}.jpg" width="100%"
+						alt="${products.getProductName()}">
 							<div class="card__content">
-								<h1 class="card__title"><c:out value=" ${product.getProductName()}" /></h1>
-								Référence de l'article :<c:out value=" ${product.getProductCode()}" />
-								<p class="card__text"><c:out value=" ${product.getProductDescription()}" /></p>
-								<p>Gamme : <c:out value=" ${product.getProductLine()}" /></p>
-								<p>Echelle de la maquette au<c:out value=" ${product.getProductScale()}" /></p>
+								<h1 class="card__title"><c:out value=" ${products.getProductName()}" /></h1>
+								Référence de l'article :<c:out value=" ${products.getProductCode()}" />
+								<p class="card__text"><c:out value=" ${products.getProductDescription()}" /></p>
+								<p>Gamme : <c:out value=" ${products.getProductlinesEntity()}" /></p>
+								<p>Echelle de la maquette au<c:out value=" ${products.getProductScale()}" /></p>
 								
-							<p>Prix :<c:out value=" ${product.getBuyPrice()}"/> &euro;
+							<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
 							
 								<c:if test="${ !empty sessionScope.login }">
-									<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${product.getProductCode() }" class="button card__btn">Buy now</a>
+									<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${products.getProductCode() }" class="button card__btn">Buy now</a>
 									<br/>
 								</c:if>
 								
