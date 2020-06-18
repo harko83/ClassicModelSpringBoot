@@ -105,8 +105,8 @@ public class ProductsEntity implements Serializable {
 	public void setMSRP(double mSRP) {
 		MSRP = mSRP;
 	}
-	public ProductlinesEntity getProductlinesEntity() {
-		return productlinesEntity;
+	public String getProductlinesEntity() {
+		return productlinesEntity.getProductLine();
 	}
 	public void setProductlinesEntity(ProductlinesEntity productlinesEntity) {
 		this.productlinesEntity = productlinesEntity;

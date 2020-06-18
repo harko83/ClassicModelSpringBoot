@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="<c:url value="css/styles.css"/>" />
+<link rel="stylesheet" type="text/css" href="<c:url value="${pageContext.request.contextPath}/css/styles.css"/>" />
 <title>Classic Models</title>
 </head>
 
@@ -13,14 +13,12 @@
 
 	<%@ include file="menu.jsp"%>
 	
-	<p> TEST PAGE CATALOGUE</p>
-	
 	<section id="ProductContainer">
 		<c:forEach items="${products}" var="products">
 				<ul class="sale-item">
 					<li class="cards__item">
 						<div class="card">
-							<img src="img/photos/Products/${products.getProductCode()}.jpg" width="100%"
+							<img src="${pageContext.request.contextPath}/img/photos/Products/${products.getProductCode()}.jpg" width="100%"
 						alt="${products.getProductName()}">
 							<div class="card__content">
 								<h1 class="card__title"><c:out value=" ${products.getProductName()}" /></h1>
@@ -29,7 +27,7 @@
 								<p>Gamme : <c:out value=" ${products.getProductlinesEntity()}" /></p>
 								<p>Echelle de la maquette au<c:out value=" ${products.getProductScale()}" /></p>
 								
-							<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
+								<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
 							
 								<c:if test="${ !empty sessionScope.login }">
 									<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${products.getProductCode() }" class="button card__btn">Buy now</a>

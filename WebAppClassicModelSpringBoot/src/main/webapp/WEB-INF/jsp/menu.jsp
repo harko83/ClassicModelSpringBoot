@@ -31,5 +31,5 @@
       		<div class="line2"></div>
       		<div class="line3"></div>
       </div>
-      <script src="js/app.js"></script>
+      <script src="${pageContext.request.contextPath}/js/app.js"></script>
 </nav>

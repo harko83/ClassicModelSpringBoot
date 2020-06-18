@@ -9,7 +9,7 @@ import org.vladirius.classicmodel.data.models.ProductsEntity;
 import org.vladirius.classicmodel.data.repositories.ProductRepository;
 
 @Service
-public class ProductsService {
+public class ProductsService  {
 	@Autowired
 	private ProductRepository repo;
 	
@@ -19,5 +19,13 @@ public class ProductsService {
 			productsList.add(product);
 		}
 		return productsList;
+	}
+	
+	public List<ProductsEntity> findProductsByCategories(String productLines) {
+		List<ProductsEntity> productsByCat = new ArrayList<ProductsEntity>();
+		for(ProductsEntity productbycat : repo.findProductsByCategories(productLines)) {
+			productsByCat.add(productbycat);
+		}
+		return productsByCat;
 	}
 }
