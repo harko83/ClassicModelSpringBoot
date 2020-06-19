@@ -4,6 +4,8 @@
            <li><a href="/">Home</a></li>
            
            <li><a href="/products"> Products</a></li>
+           
+           <li><a href="/contact"> Contact</a></li>
 
            <c:choose>
 	           <c:when test="${ !empty sessionScope.login }">
@@ -20,8 +22,7 @@
 			      
 			      <input type="password" placeholder="Password" name="pass" id="pass" size="5%">
 			      
-			      <button type="submit">Connect</button>
-			      
+			      <button type="submit">Connect</button> 
 			    </form></li>
 			    </c:otherwise>
 		    </c:choose>
