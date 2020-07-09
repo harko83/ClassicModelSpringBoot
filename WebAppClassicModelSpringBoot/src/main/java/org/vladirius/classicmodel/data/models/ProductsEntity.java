@@ -35,7 +35,7 @@ public class ProductsEntity implements Serializable {
 	//Specify the foreign key
 	@ManyToOne()
 	@JoinColumn(name = "productLine")
-	private ProductlinesEntity productlinesEntity;
+	private ProductlinesEntity productLine;
 	
 	@Column(name = "productScale")
 	private String productScale;
@@ -105,11 +105,17 @@ public class ProductsEntity implements Serializable {
 	public void setMSRP(double mSRP) {
 		MSRP = mSRP;
 	}
-	public String getProductlinesEntity() {
-		return productlinesEntity.getProductLine();
-	}
-	public void setProductlinesEntity(ProductlinesEntity productlinesEntity) {
-		this.productlinesEntity = productlinesEntity;
-	}
 
+//	public String getProductlinesEntity() {
+//		return productLine.getProductLine();
+//	}
+//	public void setProductlinesEntity(String productline) {
+//		productLine.setProductLine(productline);
+
+	public ProductlinesEntity getProductlinesEntity() {
+		return productLine;
+	}
+	public void setProductlinesEntity(ProductlinesEntity productline) {
+		this.productLine = productline;
+	}
 }

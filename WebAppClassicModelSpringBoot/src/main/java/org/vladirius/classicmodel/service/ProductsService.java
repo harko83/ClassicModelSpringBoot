@@ -1,6 +1,5 @@
 package org.vladirius.classicmodel.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +13,10 @@ public class ProductsService  {
 	private ProductRepository repo;
 	
 	public List<ProductsEntity> getProducts(){
-		List<ProductsEntity> productsList = new ArrayList<ProductsEntity>();
-		for(ProductsEntity product: repo.findAll()) {
-			productsList.add(product);
-		}
-		return productsList;
+		return (List<ProductsEntity>) repo.findAll();
 	}
 	
 	public List<ProductsEntity> findProductsByCategories(String productLines) {
-		List<ProductsEntity> productsByCat = new ArrayList<ProductsEntity>();
-		for(ProductsEntity productbycat : repo.findProductsByCategories(productLines)) {
-			productsByCat.add(productbycat);
-		}
-		return productsByCat;
+		return repo.findProductsByCategories(productLines);
 	}
 }

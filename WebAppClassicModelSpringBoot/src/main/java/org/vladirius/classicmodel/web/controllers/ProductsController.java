@@ -12,60 +12,69 @@ import org.vladirius.classicmodel.service.ProductsService;
 @Controller
 @RequestMapping("/products")
 public class ProductsController {
+	public static final String CLASSIC_CARS_URL =  "/ClassicCars";
+	public static final String MOTORCYCLES_URL =  "/Motorcycles";
+	public static final String PLANES_URL =  "/Planes";
+	public static final String SHIPS_URL =  "/Ships";
+	public static final String TRAINS_URL =  "/Trains";
+	public static final String TRUCKSANDBUSES_URL =  "/TrucksAndBuses";
+	public static final String VINTAGECARS_URL =  "/VintageCars";
+	public static final String CATALOG = "catalog";
+	
 	@Autowired
 	ProductsService productsService;
 	
 	@GetMapping("")
 	public ModelAndView products() {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.getProducts());
 		return modelAndView;
 	}
 	
-	@PostMapping("/ClassicCars")
+	@PostMapping(CLASSIC_CARS_URL)
 	public ModelAndView productsByCars(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
 	
-	@PostMapping("/Motorcycles")
+	@PostMapping(MOTORCYCLES_URL)
 	public ModelAndView productsByMoto(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
 	
-	@PostMapping("/Planes")
+	@PostMapping(PLANES_URL)
 	public ModelAndView productsByPlanes(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
 	
-	@PostMapping("/Ships")
+	@PostMapping(SHIPS_URL)
 	public ModelAndView productsByShips(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
 	
-	@PostMapping("/Trains")
+	@PostMapping(TRAINS_URL)
 	public ModelAndView productsByTrains(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
 	
-	@PostMapping("/TrucksAndBuses")
+	@PostMapping(TRUCKSANDBUSES_URL)
 	public ModelAndView productsByTruckAndBuses(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}
-	@PostMapping("/VintageCars")
+	@PostMapping(VINTAGECARS_URL)
 	public ModelAndView productsByVintageCars(@RequestParam("button") String categories) {
-		ModelAndView modelAndView = new ModelAndView("catalog");
+		ModelAndView modelAndView = new ModelAndView(CATALOG);
 		modelAndView.addObject("products", productsService.findProductsByCategories(categories));
 		return modelAndView;
 	}

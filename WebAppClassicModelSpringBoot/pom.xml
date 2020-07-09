@@ -18,6 +18,8 @@
 
 	<properties>
 		<java.version>13</java.version>
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
+    	<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -84,13 +86,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
+		<!-- Jupiter API for writing tests -->
+	    <dependency>
+	      <groupId>org.junit.jupiter</groupId>
+	      <artifactId>junit-jupiter-engine</artifactId>
+	      <scope>test</scope>
+	    </dependency>
 
 	</dependencies>
 

@@ -52,6 +52,8 @@ public class LoginsEntity implements Serializable {
 	
 	@Column(name = "dateMAJ")
 	private Date dateMAJ;
+	
+	private boolean enabled;
 
 	public long getCustomerNumber() {
 		return customerNumber;
@@ -117,6 +119,14 @@ public class LoginsEntity implements Serializable {
 
 	public void setDateMAJ(Date dateMAJ) {
 		this.dateMAJ = dateMAJ;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 }

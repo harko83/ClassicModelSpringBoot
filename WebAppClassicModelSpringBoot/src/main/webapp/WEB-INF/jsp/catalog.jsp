@@ -24,7 +24,7 @@
 								<h1 class="card__title"><c:out value=" ${products.getProductName()}" /></h1>
 								Référence de l'article :<c:out value=" ${products.getProductCode()}" />
 								<p class="card__text"><c:out value=" ${products.getProductDescription()}" /></p>
-								<p>Gamme : <c:out value=" ${products.getProductlinesEntity()}" /></p>
+								<p>Gamme : <c:out value=" ${products.getProductlinesEntity().getProductLine()}" /></p>
 								<p>Echelle de la maquette au<c:out value=" ${products.getProductScale()}" /></p>
 								
 								<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
