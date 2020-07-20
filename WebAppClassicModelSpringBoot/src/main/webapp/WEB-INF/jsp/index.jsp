@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <link href="<c:url value="/css/styles.css"/>" rel="stylesheet" type="text/css" />
@@ -18,9 +18,9 @@
     	<%@ include file="categories.jsp" %>
         <aside class="element">
             <div>
-             <c:if test="${ !empty sessionScope.login }">
-				<p> Bienvenue ${ sessionScope.login }</p>
-			</c:if>
+             <sec:authorize access="isAuthenticated()">
+			    Welcome Back, <sec:authentication property="login"/>
+			</sec:authorize>
 			
 			<br/>
 			

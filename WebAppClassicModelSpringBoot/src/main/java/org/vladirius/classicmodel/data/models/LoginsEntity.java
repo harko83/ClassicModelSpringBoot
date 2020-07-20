@@ -2,14 +2,22 @@ package org.vladirius.classicmodel.data.models;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.mapping.Set;
 
 /**
  * Entity copie de la table de la base
@@ -19,7 +27,6 @@ import javax.persistence.Table;
  */
 
 @Entity
-@IdClass(LoginPK.class)
 @Table(name = "logins")
 public class LoginsEntity implements Serializable {
 
@@ -29,12 +36,15 @@ public class LoginsEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@OneToOne(targetEntity = CustomersEntity.class)
+	@Column(name = "loginID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long loginID;
+	
+	@OneToOne(targetEntity = CustomersEntity.class, cascade = CascadeType.ALL )
 	@JoinColumn(name = "customerNumber")
 	private Long customerNumber;
 	
-	@Id
-	@OneToOne(targetEntity = EmployeesEntity.class)
+	@OneToOne(targetEntity = EmployeesEntity.class, cascade = CascadeType.ALL )
 	@JoinColumn(name = "employeeNumber")
 	private Long employeeNumber;
 	
@@ -44,26 +54,47 @@ public class LoginsEntity implements Serializable {
 	@Column(name = "pwd")
 	private String pwd;
 	
-	@Column(name = "profil")
-	private int profil;
-	
 	@Column(name = "dateCrea")
 	private Date dateCrea;
 	
 	@Column(name = "dateMAJ")
 	private Date dateMAJ;
 	
+	@Column(name = "enabled")
 	private boolean enabled;
 
-	public long getCustomerNumber() {
-		return customerNumber;
+	
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "users_roles",
+			joinColumns = {@JoinColumn(name = "user_id")},
+			inverseJoinColumns = {@JoinColumn(name = "role_id")}
+			)
+	private java.util.Set<Role> roles = new HashSet<>();
+	
+	public LoginsEntity() {
+		
+	}
+	
+	
+	/*
+	 * GETTERS-SETTERS
+	 */
+	public Long getLoginID() {
+		return loginID;
 	}
 
-	public void setCustomerNumber(long customerNumber) {
-		this.customerNumber = customerNumber;
+	public void setLoginID(Long loginID) {
+		this.loginID = loginID;
 	}
 	
-	
+	public void setCustomerNumber(Long customerNumber) {
+		this.customerNumber = customerNumber;
+	}
+
+	public Long getCustomerNumber() {
+		return customerNumber;
+	}
 
 	public Long getEmployeeNumber() {
 		return employeeNumber;
@@ -75,10 +106,6 @@ public class LoginsEntity implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public void setCustomerNumber(Long customerNumber) {
-		this.customerNumber = customerNumber;
 	}
 
 	public String getLogin() {
@@ -95,14 +122,6 @@ public class LoginsEntity implements Serializable {
 
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
-	}
-
-	public int getProfil() {
-		return profil;
-	}
-
-	public void setProfil(int profil) {
-		this.profil = profil;
 	}
 
 	public Date getDateCrea() {
@@ -127,6 +146,14 @@ public class LoginsEntity implements Serializable {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public java.util.Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(java.util.Set<Role> roles) {
+		this.roles = roles;
 	}
 
 }

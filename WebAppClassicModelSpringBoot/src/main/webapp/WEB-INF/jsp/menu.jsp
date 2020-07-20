@@ -7,25 +7,26 @@
            
            <li><a href="/contact"> Contact</a></li>
 
-           <c:choose>
-	           <c:when test="${ !empty sessionScope.login }">
+	           	<sec:authorize access="!isAuthenticated()">
+					  <li><form method="post" action="${contextPath}/login">
+					  <span>${message}</span>
+				      <input type="text" placeholder="Username" name="login" id="login" size="5%">
+				      <input type="password" placeholder="Password" name="pass" id="pass" size="5%">
+
+				      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				      <button type="submit">Connect</button> 
+			    	  </form></li>
+			    	  <br><span>${error}</span>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
 				   <li><a href="/cart">Cart</a></li>
-		           <li><form method="get" action="/logout">
-				      <p>Bienvenue ${ sessionScope.login }</p>
-				      <button type="submit">Disconnect</button>
-				   </form></li>
-			   </c:when>
-			   <c:otherwise>
-	           <li><form method="post" action="/login">
-	           
-			      <input type="text" placeholder="Username" name="login" id="login" size="5%">
-			      
-			      <input type="password" placeholder="Password" name="pass" id="pass" size="5%">
-			      
-			      <button type="submit">Connect</button> 
-			    </form></li>
-			    </c:otherwise>
-		    </c:choose>
+		            <li><form method="get" action="/logout">
+		        	<p>Bienvenue <sec:authentication property="login"/></p>
+				    <button type="submit">Disconnect</button>
+				    </form></li>
+				</sec:authorize>
+
+
       </ul>
       <div class="burger">
       		<div class="line1"></div>
