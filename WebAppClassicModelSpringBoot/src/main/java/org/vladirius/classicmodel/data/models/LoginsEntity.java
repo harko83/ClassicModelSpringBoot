@@ -2,7 +2,8 @@ package org.vladirius.classicmodel.data.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.mapping.Set;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Entity copie de la table de la base
@@ -28,7 +30,8 @@ import org.hibernate.mapping.Set;
 
 @Entity
 @Table(name = "logins")
-public class LoginsEntity implements Serializable {
+public class LoginsEntity implements UserDetails, Serializable {
+
 
 	/**
 	 * 
@@ -42,11 +45,11 @@ public class LoginsEntity implements Serializable {
 	
 	@OneToOne(targetEntity = CustomersEntity.class, cascade = CascadeType.ALL )
 	@JoinColumn(name = "customerNumber")
-	private Long customerNumber;
+	private CustomersEntity customerNumber;
 	
 	@OneToOne(targetEntity = EmployeesEntity.class, cascade = CascadeType.ALL )
 	@JoinColumn(name = "employeeNumber")
-	private Long employeeNumber;
+	private EmployeesEntity employeeNumber;
 	
 	@Column(name = "login")
 	private String login;
@@ -60,21 +63,14 @@ public class LoginsEntity implements Serializable {
 	@Column(name = "dateMAJ")
 	private Date dateMAJ;
 	
-	@Column(name = "enabled")
-	private boolean enabled;
-
-	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = {@JoinColumn(name = "user_id")},
-			inverseJoinColumns = {@JoinColumn(name = "role_id")}
-			)
-	private java.util.Set<Role> roles = new HashSet<>();
+			inverseJoinColumns = {@JoinColumn(name = "role_id")})
+	private Set<Role> authorities;
 	
-	public LoginsEntity() {
-		
-	}
+	public LoginsEntity() {}
 	
 	
 	/*
@@ -87,21 +83,25 @@ public class LoginsEntity implements Serializable {
 	public void setLoginID(Long loginID) {
 		this.loginID = loginID;
 	}
-	
-	public void setCustomerNumber(Long customerNumber) {
-		this.customerNumber = customerNumber;
-	}
 
-	public Long getCustomerNumber() {
+	public CustomersEntity getCustomerNumber() {
 		return customerNumber;
 	}
 
-	public Long getEmployeeNumber() {
+	public void setCustomerNumber(CustomersEntity customerNumber) {
+		this.customerNumber = customerNumber;
+	}
+
+	public EmployeesEntity getEmployeeNumber() {
 		return employeeNumber;
 	}
 
-	public void setEmployeeNumber(Long employeeNumber) {
+	public void setEmployeeNumber(EmployeesEntity employeeNumber) {
 		this.employeeNumber = employeeNumber;
+	}
+
+	public void setAuthorities(Set<Role> authorities) {
+		this.authorities = authorities;
 	}
 
 	public static long getSerialversionuid() {
@@ -139,21 +139,43 @@ public class LoginsEntity implements Serializable {
 	public void setDateMAJ(Date dateMAJ) {
 		this.dateMAJ = dateMAJ;
 	}
+	
+	/*
+	 * userDetailsImpl
+	 */
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.authorities;
+	}
 
+	@Override
+	public String getPassword() {
+		return this.pwd;
+	}
+
+	@Override
+	public String getUsername() {
+		return this.login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
 	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public java.util.Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(java.util.Set<Role> roles) {
-		this.roles = roles;
+		return true;
 	}
 
 }

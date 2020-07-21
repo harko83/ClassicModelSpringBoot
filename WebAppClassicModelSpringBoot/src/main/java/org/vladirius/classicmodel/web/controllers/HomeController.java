@@ -17,6 +17,12 @@ public class HomeController extends BaseController {
 		return view("index");
 	}
 	
+	@GetMapping("/home")
+	@PageTitle("Index")
+	public ModelAndView home() {
+		return view("home");
+	}
+	
 	@GetMapping("/contact")
 	public ModelAndView contact() {
 		return view("contact");

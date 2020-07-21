@@ -22,14 +22,14 @@ public class LoginController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
-		return "login";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/loginFailed", method = RequestMethod.GET)
 	public String loginError(Model model) {
 		log.info("Login attempt failed");
 		model.addAttribute("error", "true");
-		return "login";
+		return "redirect:/index";
 	}
 		
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -47,7 +47,7 @@ public class LoginController {
 		UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
 		validatePrinciple(authentication.getPrincipal());
 		LoginsEntity loggedInUser =  ((MyUserDetails) authentication.getPrincipal()).getUserDetails();
-		
+		System.out.println(authentication.getName());
 		model.addAttribute("currentUser", loggedInUser.getLogin());
 		session.setAttribute("userId", loggedInUser.getLoginID());
 		return "redirect:/index";

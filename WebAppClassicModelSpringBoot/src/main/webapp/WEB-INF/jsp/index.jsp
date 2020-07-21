@@ -18,10 +18,32 @@
     	<%@ include file="categories.jsp" %>
         <aside class="element">
             <div>
-             <sec:authorize access="isAuthenticated()">
-			    Welcome Back, <sec:authentication property="login"/>
-			</sec:authorize>
-			
+	            <sec:authorize access="isAuthenticated()">
+	            <sec:authentication property="principal.username" var="username" />
+				    Welcome Back, ${username}
+				    <br>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('SUPEREMPLOYEE')">
+				  This content is only shown to SUPEREMPLOYEE.
+				  <br>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('EMPLOYEE')">
+				  This content is only shown to EMPLOYEE.
+				  <br>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('ADMIN')">
+				  This content is only shown to administrators.
+				  <br>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('CLIENT')">
+				  This content is only shown to client.
+				  <br>
+				</sec:authorize>
+				
 			<br/>
 			
             <h1>Nos Nouveautés</h1>

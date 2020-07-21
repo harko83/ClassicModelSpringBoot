@@ -24,7 +24,7 @@ public class MyUserDetails implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<Role> roles = loginsEntity.getRoles();
+		Set<Role> roles = (Set<Role>) loginsEntity.getAuthorities();
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 		
 		for(Role role : roles) {
@@ -37,11 +37,11 @@ public class MyUserDetails implements UserDetails{
 		return loginsEntity.getLoginID();
 	}
 	
-	public Long getCustomerNumber() {
+	public CustomersEntity getCustomerNumber() {
 		return loginsEntity.getCustomerNumber();
 	}
 	
-	public Long getEmployeeNumber() {
+	public EmployeesEntity getEmployeeNumber() {
 		return loginsEntity.getEmployeeNumber();
 	}
 
@@ -72,7 +72,7 @@ public class MyUserDetails implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		return loginsEntity.isEnabled();
+		return true;
 	}
 	
 	public LoginsEntity getUserDetails() {

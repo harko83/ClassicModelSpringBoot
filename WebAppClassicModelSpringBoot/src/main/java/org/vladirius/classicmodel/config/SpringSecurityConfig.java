@@ -18,37 +18,9 @@ import org.vladirius.classicmodel.service.UserDetailsServiceImpl;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-
-//	@Autowired
-//	private AccessDeniedHandler accessDeniedHandler;
-//	
-//	/*
-//	 * roles admin allow to access /admin/**
-//	 * roles user allow to acces /user/**
-//	 * custom 403 acces denied handler
-//	 */
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		
-//		http.csrf().disable()
-//		.authorizeRequests()
-//			.antMatchers("/","/home","/about").permitAll()
-//			.antMatchers("/admin/**").hasAnyRole("ADMIN")
-//			.and()
-//			.formLogin()
-//				.loginPage("/login") // Specifies the login page URL
-//				.permitAll()
-//				.and()
-//				.exceptionHandling().accessDeniedHandler(accessDeniedHandler);
-//	}
-//	
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication()
-//		.withUser("user").password("password").roles("USER")
-//		.and()
-//		.withUser("admin").password("password").roles("ADMIN");
-//	}
+	
+	@Autowired
+	private AccessDeniedHandler accessDeniedHandler;
 	
 	@Bean
 	public UserDetailsService userDetailsService() {
@@ -102,18 +74,31 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	//V3
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests().antMatchers("/","/index").hasAnyRole("ADMIN", "USER")
-                .and()
-                .authorizeRequests().antMatchers("/login", "/resource/**","/").permitAll()
-                .and()
-          .formLogin().loginPage("/login").usernameParameter("login").passwordParameter("pass").permitAll()
-                .loginProcessingUrl("/doLogin")
-                .successForwardUrl("/postLogin")
-                .failureUrl("/loginFailed")
-                .and()
-                .logout().logoutUrl("/doLogout").logoutSuccessUrl("/logout").permitAll()
-                .and()
-                .csrf().disable();
+        http	
+	        .cors()
+			.disable()
+			.csrf()
+//	            .csrfTokenRepository(this.csrfTokenRepository())
+			.disable()
+//	        .and()
+			.authorizeRequests()
+			.antMatchers("/favicon.ico", "/js/*", "/css/*", "/img/**", "/fonts/*").permitAll()
+			.antMatchers("/", "/contact", "/login", "/products", "/products/*").permitAll()
+//			.antMatchers("/", "/products", "/products/*" ).hasAnyAuthority("ADMIN", "EMPLOYEE", "SUPEREMPLOYEE", "CLIENT")
+			.anyRequest().authenticated()
+	        .and()
+			.formLogin()
+			.loginPage("/login")
+			.usernameParameter("login")
+			.passwordParameter("pass")
+			.defaultSuccessUrl("/")
+			.and()
+			.logout()
+			.logoutSuccessUrl("/")
+			.and()
+			.exceptionHandling()
+			.accessDeniedHandler(accessDeniedHandler)
+			.and()
+			.httpBasic();
     }
 }
