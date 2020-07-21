@@ -1,16 +1,19 @@
-<%@page contentType="text/html" trimDirectiveWhitespaces="true" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="<c:url value="/css/styles.css"/>" rel="stylesheet" type="text/css" />
+    <title>Classic Models</title>
+</head>
 
-<t:pageTemplate>
-   <jsp:attribute name="additionalCss">
-   </jsp:attribute>
-   <jsp:attribute name="additionalJs">
-   </jsp:attribute>
-   <jsp:body>
-		<section id="IndexContainer">
+<body>
+	
+    <%@ include file="menu.jsp"%>
+      
+    <section id="IndexContainer">
    
     	<%@ include file="categories.jsp" %>
         <aside class="element">
@@ -75,5 +78,5 @@
             </div>
         </article>
     </section>
-   </jsp:body>
-</t:pageTemplate>
+</body>
+</html>
