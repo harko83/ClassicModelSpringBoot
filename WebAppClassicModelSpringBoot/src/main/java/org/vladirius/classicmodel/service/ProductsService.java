@@ -9,6 +9,7 @@ import org.vladirius.classicmodel.data.repositories.ProductRepository;
 
 @Service
 public class ProductsService  {
+	
 	@Autowired
 	private ProductRepository repo;
 	

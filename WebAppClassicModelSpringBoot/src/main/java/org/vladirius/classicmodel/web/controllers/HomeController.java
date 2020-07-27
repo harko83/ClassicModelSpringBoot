@@ -23,8 +23,8 @@ public class HomeController extends BaseController {
 		return view("home");
 	}
 	
-	@GetMapping("/contact")
-	public ModelAndView contact() {
-		return view("contact");
-	}
+//	@GetMapping("/contact")
+//	public ModelAndView contact() {
+//		return view("contact");
+//	}
 }

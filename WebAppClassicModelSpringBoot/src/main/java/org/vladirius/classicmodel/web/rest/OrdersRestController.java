@@ -9,11 +9,11 @@ import org.vladirius.classicmodel.data.models.OrdersEntity;
 import org.vladirius.classicmodel.service.OrdersService;
 
 @RestController
-public class OrdersController {
+public class OrdersRestController {
 	@Autowired
 	private OrdersService service;
 	
-	@RequestMapping("/orders")
+	@RequestMapping("/rest/orders")
 	public List<OrdersEntity> getOrders(){
 		return service.getOrders();
 	}

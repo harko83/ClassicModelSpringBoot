@@ -12,7 +12,7 @@ import org.vladirius.classicmodel.data.models.OfficesEntity;
 import org.vladirius.classicmodel.service.OfficesServices;
 
 @RestController
-public class OfficesController {
+public class OfficesRestController {
 	@Autowired
 	private OfficesServices services;
 	
