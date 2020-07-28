@@ -20,14 +20,14 @@ public class ContactController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView contact() {
 		
-		return new ModelAndView("contact", "message", new ContactEntity());
+		return new ModelAndView("contact", "contactMSG", new ContactEntity());
 	}
 	
 	//Get the form field values which are populated using the backing bean and store it in db
 	@RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
-	public ModelAndView sendMessage(@ModelAttribute("message") ContactEntity message) {
+	public ModelAndView sendMessage(@ModelAttribute("contactMSG") ContactEntity contactEntity) {
 		
-		contactService.addMessage(message);
+		contactService.addMessage(contactEntity);
 		
 		return new ModelAndView("index");
 	}

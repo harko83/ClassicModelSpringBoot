@@ -29,7 +29,7 @@
 			<br/>
             </div>
         </aside>
-        <form:form method="POST" id="contactform" action="/sendMessage" modelAttribute="message">
+        <form:form method="POST" id="contactform" action="/contact/sendMessage" modelAttribute="contactMSG">
             <div class="form">
                 <div class="six columns noleftmargin">
                		<form:label path="firstname">Name</form:label>
