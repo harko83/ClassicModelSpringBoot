@@ -22,18 +22,18 @@
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('SUPEREMPLOYEE')">
-				  This content is only shown to SUPEREMPLOYEE.
-				  <br>
+					<li><a href="/employees/manager"> Employees</a></li>
+				<br>
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('EMPLOYEE')">
-				  This content is only shown to EMPLOYEE.
-				  <br>
+				This content is only shown to EMPLOYEE.
+				<br>
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('ADMIN')">
-				  This content is only shown to administrators.
-				  <br>
+					<li><a href="/employees/global"> Employees</a></li>
+				<br>
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('CLIENT')">

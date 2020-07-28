@@ -12,14 +12,12 @@
 	           	<sec:authorize access="!isAuthenticated()">
 	           		<li><a href="/contact"> Contact</a></li>
 					 <li><form method="post" action="${contextPath}/login">
-					 <span>${message}</span>
 				     <input type="text" placeholder="Username" name="login" id="login" size="5%">
 				     <input type="password" placeholder="Password" name="pass" id="pass" size="5%">
 
 				     <!--  input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
 				     <button type="submit">Connect</button> 
 			    	 </form></li>
-			    	 <br><span>${error}</span>
 				</sec:authorize>
 				
 				<sec:authorize access="isAuthenticated()">

@@ -9,7 +9,7 @@
       <%@ include file="htmlHead.jspf" %>
    </head>
    
-   <body class="subpage">
+   <body class="subpage" id="BodyContainer">
       <%@ include file="header.jspf" %>
 
       <section class="wrapper">
