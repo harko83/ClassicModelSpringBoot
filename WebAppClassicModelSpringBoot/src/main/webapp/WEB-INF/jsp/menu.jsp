@@ -1,3 +1,4 @@
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <nav class="menu">
 	<h1 class="logo"><a href="/" class="logo">Classic Models</a></h1>
       <ul class="nav-links">
@@ -6,7 +7,7 @@
            <li><a href="/products"> Products</a></li>
            
            	<sec:authorize access="hasAuthority('CLIENT')">
-				<li><a href="/cart">Cart</a></li>
+				<li><a href="/client/cart">Cart</a></li>
 				<li><a href="/contact"> Contact</a></li>
 			</sec:authorize>
 	           	<sec:authorize access="!isAuthenticated()">

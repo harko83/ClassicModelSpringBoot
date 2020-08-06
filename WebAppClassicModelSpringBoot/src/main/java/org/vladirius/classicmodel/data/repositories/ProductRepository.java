@@ -13,5 +13,8 @@ public interface ProductRepository extends CrudRepository<ProductsEntity, String
 	
 	@Query(value = "SELECT * FROM products WHERE productLine = ?1", nativeQuery = true)
 	List<ProductsEntity> findProductsByCategories(@Param("productLine") String productLine);
+
+	@Query(value = "SELECT * FROM products WHERE productCode = ?1", nativeQuery = true)
+	ProductsEntity findOne(@Param("productCode") String productCode);
 	
 }

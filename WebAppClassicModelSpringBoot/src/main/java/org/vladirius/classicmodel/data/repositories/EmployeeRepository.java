@@ -13,5 +13,11 @@ public interface EmployeeRepository extends CrudRepository<EmployeesEntity, Long
 	
 	@Query(value = "SELECT * from employees WHERE officeCode = ?1", nativeQuery = true)
 	List<EmployeesEntity> findByOfficeCode(@Param("officeCode")int officeCode);
+	
+	@Query(value = "SELECT * from employees WHERE firstName = ?1", nativeQuery = true)
+	EmployeesEntity findByLastName(@Param("firstName")String lastName);
+	
+	@Query(value = "SELECT * from employees WHERE reportsTo = ?1", nativeQuery = true)
+	List<EmployeesEntity> findByReportsTo(@Param("employeeNumber")Long managerEmpNumber);
 
 }

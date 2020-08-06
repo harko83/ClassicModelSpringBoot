@@ -23,17 +23,20 @@
 						alt="${products.getProductName()}">
 							<div class="card__content">
 								<h1 class="card__title"><c:out value=" ${products.getProductName()}" /></h1>
+								<br/>
 								Référence de l'article :<c:out value=" ${products.getProductCode()}" />
+								<br/>
 								<p class="card__text"><c:out value=" ${products.getProductDescription()}" /></p>
+								<br/>
 								<p>Gamme : <c:out value=" ${products.getProductlinesEntity().getProductLine()}" /></p>
 								<p>Echelle de la maquette au<c:out value=" ${products.getProductScale()}" /></p>
-								
-								<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
-							
-								<c:if test="${ !empty sessionScope.login }">
-									<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${products.getProductCode() }" class="button card__btn">Buy now</a>
-									<br/>
-								</c:if>
+								<br/>
+								<sec:authorize access="hasAuthority('CLIENT')">
+				 				<p>Prix :<c:out value=" ${products.getBuyPrice()}"/> &euro;
+				 				<br/>
+				 				<a href="${pageContext.request.contextPath }/client/cart/buy/${products.getProductCode() }" class="button card__btn">Buy now</a>
+				 				<br/>
+								</sec:authorize>
 								
 							</div>
 						</div>

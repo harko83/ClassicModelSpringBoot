@@ -19,6 +19,7 @@ import org.vladirius.classicmodel.service.UserDetailsServiceImpl;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	// Gestion des exceptions
 	@Autowired
 	private AccessDeniedHandler accessDeniedHandler;
 	
@@ -27,11 +28,17 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new UserDetailsServiceImpl();
 	}
 	
+	/*
+	 * Hashage du mot de passe
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
+	/*
+	 * Validation du token d'identification
+	 */
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -45,33 +52,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(authenticationProvider());
 	}
 	
-	//V2
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable()
-//		.authorizeRequests()
-//			.antMatchers("/favicon.ico", "/js/*", "/css/*", "/img/**", "/fonts/*").permitAll()
-//			.antMatchers("/","/contact","/products", "/products/*").anonymous()
-////			.antMatchers("/").hasAnyAuthority("ADMIN", "EMPLOYEE", "SUPEREMPLOYEE", "CLIENT")
-////			.antMatchers("/new").hasAnyAuthority("ADMIN", "SUPEREMPLOYEE", "EMPLOYEE")
-////            .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "SUPEREMPLOYEE", "EMPLOYEE")
-////            .antMatchers("/delete/**").hasAuthority("ADMIN")
-//            .anyRequest().authenticated()
-//            .and()
-//            .formLogin()
-//	            .loginPage("/login").permitAll()
-////	            .usernameParameter("login")
-////	            .passwordParameter("pass")
-//	            .defaultSuccessUrl("/")
-//            .and()
-//            .logout().permitAll()
-////          .logoutSuccessUrl("/logout")
-//            .and()
-//            .exceptionHandling().accessDeniedPage("/403")
-//            ;
-//	}
-	
-	//V3
+	/*
+	 * Cette méthode va gérer les accès aux différentes URL
+	 * selon que le visiteur soit connecté ou non
+	 * selon le role du profil connecté
+	 */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http	
@@ -87,6 +72,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 //			.antMatchers("/", "/products", "/products/*" ).hasAnyAuthority("ADMIN", "EMPLOYEE", "SUPEREMPLOYEE", "CLIENT")
 			.antMatchers("/employees/global").hasAuthority("ADMIN")
 			.antMatchers("/employees/manager").hasAuthority("SUPEREMPLOYEE")
+			.antMatchers("/client/cart").hasAnyAuthority("CLIENT")
 			.anyRequest().authenticated()
 	        .and()
 			.formLogin()

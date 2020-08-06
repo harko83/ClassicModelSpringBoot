@@ -19,10 +19,14 @@
 	            <sec:authentication property="principal.username" var="username" />
 				    Welcome Back, ${username}
 				    <br>
+				
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('SUPEREMPLOYEE')">
-					<li><a href="/employees/manager"> Employees</a></li>
+				<form action="/employees/manager" method="get">
+				<button type="submit" name="button" value="${username}">My office</button>
+				</form>
+				<a href="http://localhost:8080/client/${username}" > My account </a>
 				<br>
 				</sec:authorize>
 				

@@ -6,6 +6,9 @@ public class Item {
 	private ProductsEntity product;
 	private int quantity;
 	
+	public Item() {}
+	
+	
 	public Item(List<ProductsEntity> list) {
 	}
 	

@@ -3,12 +3,18 @@ package org.vladirius.classicmodel.data.models;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+@Embeddable
 public class OrderDetailsPK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+
 	private int orderNumber;
+	
+
 	private String productCode;
 
 	public OrderDetailsPK() {
@@ -17,7 +23,6 @@ public class OrderDetailsPK implements Serializable {
 
 	public OrderDetailsPK(int orderNumber, String productCode) {
 		this.orderNumber = orderNumber;
-		this.productCode = productCode;
 	}
 
 	public int getOrderNumber() {
