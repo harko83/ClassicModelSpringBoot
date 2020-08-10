@@ -9,7 +9,7 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-		<section id="ProductContainer">
+		<section class="ProductContainer">
 			<c:forEach items="${products}" var="products">
 					<ul class="sale-item">
 						<li class="cards__item">

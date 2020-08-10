@@ -60,9 +60,9 @@
 		        <td><c:out value="${employees.getFirstName()}" /></td>
 		        <td><c:out value="${employees.getExtension()}" /></td>
 		        <td><c:out value="${employees.getEmail()}" /></td>
-		        <td><c:out value="${employees.getJobTitle()}" /></td>
 		        <td><c:out value="${employees.getOfficeCode().getOfficeCode()}" /></td>
 		        <td><c:out value="${employees.getReportsTo().getEmployeeNumber()}" /></td>
+		        <td><c:out value="${employees.getJobTitle()}" /></td>
 		    </tr>
 	   		</c:forEach>
 	   		</table>

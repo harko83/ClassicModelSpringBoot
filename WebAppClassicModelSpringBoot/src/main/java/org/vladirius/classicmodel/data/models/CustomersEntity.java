@@ -170,5 +170,10 @@ public class CustomersEntity implements Serializable {
 	public void setEmployeesEntity(EmployeesEntity employeesEntity) {
 		this.salesREmployeeNumber = employeesEntity;
 	}
+	
+	public String getName() {
+		String name = (this.customerNumber+this.contactFirstName+this.contactLastName).trim();
+		return name;
+	}
 
 }

@@ -10,6 +10,7 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
+   <div class="wrapper">
 		<section>
    
     	<%@ include file="categories.jsp" %>
@@ -79,5 +80,6 @@
             </div>
         </article>
     </section>
+    </div>
    </jsp:body>
 </t:pageTemplate>
