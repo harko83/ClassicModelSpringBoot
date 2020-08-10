@@ -16,14 +16,16 @@ public class ProductsService  {
 	@Autowired
 	private ProductRepository repo;
 	
+	// Retrieve all products
 	public List<ProductsEntity> getProducts(){
 		return (List<ProductsEntity>) repo.findAll();
 	}
 	
+	// Retrieve product by categories
 	public List<ProductsEntity> findProductsByCategories(String productLines) {
 		return repo.findProductsByCategories(productLines);
 	}
-	
+	 // Retrieve one product
 	public ProductsEntity find(String productCode) {
 		return repo.findOne(productCode);
 	}

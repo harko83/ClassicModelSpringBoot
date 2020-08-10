@@ -13,45 +13,49 @@
 		<section id="IndexContainer">
 
 	<section id="ProductContainer">
-
-	<table cellpadding="2" cellspacing="2" border="1">
-		<tr>
-			<th>Option</th>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Photo</th>
-			<th>Price</th>
-			<th>Quantity</th>
-			<th>Sub Total</th>
-		</tr>
-		<c:set var="total" value="0"></c:set>
-		<c:forEach var="item" items="${sessionScope.cart}">
-			<c:set var="total" value="${total + item.product.getBuyPrice() * item.quantity}"></c:set>
+	<form method="post" action="/client/cart/update">
+		<table cellpadding="2" cellspacing="2" border="1">
 			<tr>
-				<td align="center">
-					<a href="${pageContext.request.contextPath }/cart?action=remove&id=${item.product.getProductCode()}"
-					onclick="return confirm('Are you sure?')">Remove</a>
-				</td>
-				<td>${item.product.getProductCode()}</td>
-				<td>${item.product.getProductName()}</td>
-				<td>
-					<img src="${pageContext.request.contextPath}/img/photos/Products/${products.getProductCode()}.jpg" alt="${item.product.getProductName()}" width="25%">
-				</td>
-				<td>${item.product.getBuyPrice()}</td>
-				<td>${item.quantity }</td>
-				<td>${item.product.getBuyPrice() * item.quantity }</td>
+				<th>Option</th>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Photo</th>
+				<th>Price</th>
+				<th>
+					Quantity
+					<input type="submit" value="Update">
+				</th>
+				<th>Sub Total</th>
 			</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="6" align="right">Total</td>
-			<td>${total }</td>
-		</tr>
-	</table>
+			<c:forEach var="item" items="${sessionScope.cart}">
+				<c:set var="subTotal" value="${item.product.getMSRP() * item.quantity}"></c:set>
+				<tr>
+					<td align="center">
+						<a href="${pageContext.request.contextPath }/client/cart/remove/${item.product.getProductCode()}">X</a>
+					</td>
+					<td>${item.product.getProductCode()}</td>
+					<td>${item.product.getProductName()}</td>
+					<td>
+						<img src="${pageContext.request.contextPath}/img/photos/Products/${item.product.getProductCode()}.jpg" alt="${item.product.getProductName()}" width="125px">
+					</td>
+					<td>${item.product.getMSRP()}</td>
+					<td>
+						<input type="number" value="${item.quantity}" name="quantity" min="1" style="width: 50px;"> 
+					</td>
+					<td>${subTotal}</td>
+				</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="6" align="right">Total</td>
+				<td>${totalCart}</td>
+			</tr>
+		</table>
+	</form>
 	<br/>
-	<a href="/products">Continue Shopping</a>
-
-		
+	
 	</section>
+	<a href="/products">Continue Shopping</a>
+	<a href="/client/cart/checkout">Check Out</a>
 	</section>
    </jsp:body>
 </t:pageTemplate>

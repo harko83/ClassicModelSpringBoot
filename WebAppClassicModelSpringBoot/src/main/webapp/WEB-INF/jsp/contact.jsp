@@ -10,7 +10,7 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-		<section id="IndexContainer">
+		<section>
         <aside class="element">
             <div>
             	<sec:authorize access="!isAuthenticated()">

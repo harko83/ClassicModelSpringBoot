@@ -40,7 +40,7 @@
 .nav-links{
 	display: flex;
 	justify-content: space-around;
-	width: 35%;
+	width: 40%;
 }
 
 .nav-links li{
@@ -49,6 +49,7 @@
 
 .nav-links button{
 	background-color: #cac1c2;
+	padding : 2px;
 	color: black;
 	border: 2px solid #555555;
 }
@@ -63,6 +64,34 @@
 	letter-spacing: 3px;
 	font-weight: bold;
 	font-size: 22px;
+}
+.nav-links a:hover{
+	text-shadow: 2px 2px #8FB0A9;
+}
+.nav-links p{
+	text-align: center;
+	text-shadow: 2px 2px #8FB0A9;
+	font-family: arial;
+}
+.username{
+	text-align: center;
+}
+
+.accountBTN{
+	color: #983642;
+	background-color: #cac1c2;
+	border: 0;
+	letter-spacing: 2px;
+	font-weight: bold;
+	font-size: 22px;
+	font-family: freebooter_scriptregular;
+	cursor: pointer;
+}
+.accountBTN:focus{
+	outline: none;
+}
+.accountBTN:hover{
+	text-shadow: 2px 2px #8FB0A9;
 }
 
 .burger{
@@ -135,7 +164,7 @@ a.button{
   border-left: 1px solid #CCCCCC;
 	
   display: block;
-  width: 50%;
+  width:35%;
   text-align: center;
   margin: auto;
 

@@ -9,11 +9,15 @@
 	           <li><a href="/products"> Products</a></li>
 	           
 	           	<sec:authorize access="hasAuthority('CLIENT')">
+	           	<sec:authentication property="principal.username" var="username" />
+	           		<li><form action="/client/account" method="get">
+	           			<input type="submit" value="Account" class="accountBTN">
+	           			<input type="hidden" value="${username}" name="clientID"></form><li>
 					<li><a href="/client/cart">Cart</a></li>
 					<li><a href="/contact"> Contact</a></li>
 				</sec:authorize>
 		           	<sec:authorize access="!isAuthenticated()">
-		           		<li><a href="/contact"> Contact</a></li>
+		           		 <li><a href="/contact"> Contact</a></li>
 						 <li><form method="post" action="${contextPath}/login">
 					     <input type="text" placeholder="Username" name="login" id="login" size="5%">
 					     <input type="password" placeholder="Password" name="pass" id="pass" size="5%">
@@ -24,8 +28,9 @@
 					</sec:authorize>
 					
 					<sec:authorize access="isAuthenticated()">
-			            <li><form method="get" action="/logout">
-			        	<p>Bienvenue <sec:authentication property="principal.username"/></p>
+			            
+			        	<li><div class="username">Welcome<p>${username}</p></div></li>
+			        	<li><form method="get" action="/logout">
 					    <button type="submit">Disconnect</button>
 					    </form></li>
 					</sec:authorize>

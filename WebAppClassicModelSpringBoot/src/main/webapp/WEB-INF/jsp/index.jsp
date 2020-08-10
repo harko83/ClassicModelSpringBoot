@@ -10,7 +10,7 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-		<section id="IndexContainer">
+		<section>
    
     	<%@ include file="categories.jsp" %>
         <aside class="element">
