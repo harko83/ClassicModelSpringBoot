@@ -11,7 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.vladirius.classicmodel.data.models.LoginsEntity;
 import org.vladirius.classicmodel.data.models.MyUserDetails;
 import org.vladirius.classicmodel.data.repositories.UserRepository;
-
+/*
+ * Implémentation de userDetailsService
+ * afin de retourner l'utilisateur
+ * demandant une authentification
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	private static final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);

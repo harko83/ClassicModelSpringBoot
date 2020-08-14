@@ -15,13 +15,11 @@
 	<packaging>war</packaging>
 	<name>WebAppClassicModelSpringBoot</name>
 	<description>Classic model project</description>
-
 	<properties>
 		<java.version>13</java.version>
 		<junit.jupiter.version>5.6.2</junit.jupiter.version>
     	<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 	</properties>
-
 	<dependencies>
 		<!-- Spring Security -->
         <dependency>
@@ -32,30 +30,25 @@
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-taglibs</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -78,14 +71,12 @@
 			<version>4.6.1</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- Optional, test for static content, bootstrap CSS-->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>3.3.7</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -97,9 +88,13 @@
 	      <artifactId>junit-jupiter-engine</artifactId>
 	      <scope>test</scope>
 	    </dependency>
-
+	    <dependency>
+		  <groupId>org.assertj</groupId>
+		  <artifactId>assertj-core</artifactId>
+		  <!-- use 2.9.1 for Java 7 projects -->
+		  <scope>test</scope>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -108,5 +103,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

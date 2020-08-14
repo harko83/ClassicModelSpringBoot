@@ -40,6 +40,10 @@ public class ProductlinesEntity implements Serializable {
 	@Column(name = "image")
 	private String image;
 	
+	
+	
+	public ProductlinesEntity() {}
+	
 	public String getProductLine() {
 		return productLine;
 	}

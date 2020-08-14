@@ -27,7 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public UserDetailsService userDetailsService() {
 		return new UserDetailsServiceImpl();
 	}
-	
+
 	/*
 	 * Hashage du mot de passe
 	 */
@@ -69,7 +69,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers("/favicon.ico", "/js/*", "/css/*", "/img/**", "/fonts/*").permitAll()
 			.antMatchers("/", "/contact", "/contact/sendMessage", "/login", "/products", "/products/*").permitAll()
-//			.antMatchers("/", "/products", "/products/*" ).hasAnyAuthority("ADMIN", "EMPLOYEE", "SUPEREMPLOYEE", "CLIENT")
 			.antMatchers("/employees/global").hasAuthority("ADMIN")
 			.antMatchers("/employees/manager").hasAuthority("SUPEREMPLOYEE")
 			.antMatchers("/client/cart").hasAnyAuthority("CLIENT")

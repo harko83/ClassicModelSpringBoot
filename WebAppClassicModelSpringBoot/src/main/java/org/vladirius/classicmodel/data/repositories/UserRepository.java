@@ -9,9 +9,6 @@ import org.vladirius.classicmodel.data.models.LoginsEntity;
 @Repository
 public interface UserRepository extends CrudRepository<LoginsEntity, Long> {
 	
-//	@Query(value = "SELECT * FROM logins as l WHERE l.login = :login", nativeQuery = true)
-//	public LoginsEntity getUserByUsername(@Param("login") String login);
-	
 	@Query(value = "SELECT * FROM logins as l WHERE l.login = :login", nativeQuery = true)
 	LoginsEntity getUserByUsername(@Param("login")String username);
 }

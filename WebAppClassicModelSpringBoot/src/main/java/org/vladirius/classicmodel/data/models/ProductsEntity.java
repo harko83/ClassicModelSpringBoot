@@ -20,9 +20,6 @@ import javax.persistence.Table;
 @Table(name = "products")
 public class ProductsEntity implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -57,6 +54,22 @@ public class ProductsEntity implements Serializable {
 
 	public ProductsEntity() {}
 	
+	public ProductsEntity(String productCode, String productName, ProductlinesEntity productLine, String productScale,
+			String productVendor, String productDescription, Integer quantityInStock, double buyPrice, double mSRP) {
+		this.productCode = productCode;
+		this.productName = productName;
+		this.productLine = productLine;
+		this.productScale = productScale;
+		this.productVendor = productVendor;
+		this.productDescription = productDescription;
+		this.quantityInStock = quantityInStock;
+		this.buyPrice = buyPrice;
+		this.MSRP = mSRP;
+	}
+
+/*
+ * GETTER-SETTER
+ */
 	public String getProductCode() {
 		return productCode;
 	}
@@ -106,16 +119,20 @@ public class ProductsEntity implements Serializable {
 		MSRP = mSRP;
 	}
 
-//	public String getProductlinesEntity() {
-//		return productLine.getProductLine();
-//	}
-//	public void setProductlinesEntity(String productline) {
-//		productLine.setProductLine(productline);
-
 	public ProductlinesEntity getProductlinesEntity() {
 		return productLine;
 	}
 	public void setProductlinesEntity(ProductlinesEntity productline) {
 		this.productLine = productline;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductsEntity [productCode= " + productCode + ", productName= " + productName + ", productLine= "
+				+ productLine.getProductLine() + ", productScale= " + productScale + ", productVendor= " + productVendor
+				+ ", productDescription= " + productDescription + ", quantityInStock= " + quantityInStock + ", buyPrice= "
+				+ buyPrice + ", MSRP= " + MSRP + "]\n";
+	}
+	
+	
 }

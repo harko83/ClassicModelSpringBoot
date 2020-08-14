@@ -2,6 +2,9 @@ package org.vladirius.classicmodel.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -9,6 +12,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.vladirius.classicmodel.data.models.ProductlinesEntity;
 import org.vladirius.classicmodel.data.models.ProductsEntity;
@@ -16,7 +21,10 @@ import org.vladirius.classicmodel.data.repositories.ProductRepository;
 
 import utilsTests.MvcBaseTest;
 
-class ProductsServiceTest extends MvcBaseTest {
+class ProductsServiceIT extends MvcBaseTest {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(ProductsServiceIT.class);
+	
 	@InjectMocks
 	private ProductsService productsServiceMock;
 	
@@ -114,5 +122,33 @@ class ProductsServiceTest extends MvcBaseTest {
 		
 		assertThat(expected).isNotNull();
 	}
-
+	
+	@Test
+	void testFindOneProduct() {
+		ProductlinesEntity productLine = new ProductlinesEntity();
+		productLine.setProductLine("product01");
+		
+		ProductsEntity p1 = new ProductsEntity();
+		p1.setProductCode("product01");
+		p1.setProductName("product01");
+		p1.setProductDescription("product01");
+		p1.setProductScale("product01");
+		p1.setProductVendor("product01");
+		p1.setProductlinesEntity(productLine);
+		p1.setQuantityInStock(1);
+		p1.setBuyPrice(1.11);
+		p1.setMSRP(1.11);
+		LOG.info("testFindOneProduct() - findOne('product01') to return " + p1.toString());
+		
+		when(productRepositoryMock.findOne("product01")).thenReturn(p1);
+		LOG.info("testFindOneProduct() - findOne('product01') calling");
+		
+		ProductsEntity result = productsServiceMock.find("product01");
+		LOG.info("testFindOneProduct() - Verifying findOne('product01') is called at least once");
+		
+		verify(productRepositoryMock, atLeastOnce()).findOne("product01");
+		LOG.info("testFindOneProduct() - Asserting that the result is not null");
+		
+		assertNotNull(result);
+	}
 }

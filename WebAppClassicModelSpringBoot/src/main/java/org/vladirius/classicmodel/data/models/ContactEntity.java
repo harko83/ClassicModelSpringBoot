@@ -20,9 +20,6 @@ import javax.persistence.Table;
 @Table(name = "contact")
 public class ContactEntity implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
