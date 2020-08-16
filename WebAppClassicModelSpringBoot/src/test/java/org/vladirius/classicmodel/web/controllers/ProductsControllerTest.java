@@ -42,13 +42,13 @@ class ProductsControllerTest extends MvcBaseTest {
 	@Test
 	void testProductsByCategories() throws Exception {
 		this.mockMvc.perform(post(BASE_URL+ProductsController.CATEGORIES).param("button", "Classic Cars"))
-		// HTTP 200 returned
-		.andExpect(status().isOk())
-		// Controller forwards to correct view
-		.andExpect(view().name("catalog"))
-		// Set the right model
-		.andExpect(model().attribute("products", productRepositoryMock.findProductsByCategories("Classic Cars")))
-		.andReturn();
+					// HTTP 200 returned
+					.andExpect(status().isOk())
+					// Controller forwards to correct view
+					.andExpect(view().name("catalog"))
+					// Set the right model
+					.andExpect(model().attribute("products", productRepositoryMock.findProductsByCategories("Classic Cars")))
+					.andReturn();
 	}
 
 }

@@ -2,7 +2,6 @@ package org.vladirius.classicmodel.service;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -52,13 +51,16 @@ class ProductServiceTest {
 		List<ProductsEntity> productList = new ArrayList<ProductsEntity>();
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("productLine01");
-		productList.add(new ProductsEntity("productCode01", "productName01", productLine, "productScale01", "productVendor01", "productDesc01", 1, 1.11, 1.11));
+		productList.add(new ProductsEntity("productCode01", "productName01", productLine, "productScale01", 
+											"productVendor01", "productDesc01", 1, 1.11, 1.11));
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("productLine02");
-		productList.add(new ProductsEntity("productCode02", "productName02", productLine, "productScale02", "productVendor02", "productDesc02", 2, 2.22, 2.22));
+		productList.add(new ProductsEntity("productCode02", "productName02", productLine, "productScale02", 
+											"productVendor02", "productDesc02", 2, 2.22, 2.22));
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("productLine03");
-		productList.add(new ProductsEntity("productCode03", "productName03", productLine, "productScale03", "productVendor03", "productDesc03", 3, 3.33, 3.33));
+		productList.add(new ProductsEntity("productCode03", "productName03", productLine, "productScale03",
+											"productVendor03", "productDesc03", 3, 3.33, 3.33));
 		LOG.info("Test findAll() - findAll() to return \n"+ productList.toString());
 		//When
 		when(productRepository.findAll()).thenReturn(productList);
@@ -76,10 +78,12 @@ class ProductServiceTest {
 		List<ProductsEntity> productList = new ArrayList<ProductsEntity>();
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("productLine01");
-		productList.add(new ProductsEntity("productCode01", "productName01", productLine, "productScale01", "productVendor01", "productDesc01", 1, 1.11, 1.11));
+		productList.add(new ProductsEntity("productCode01", "productName01", productLine, "productScale01",
+											"productVendor01", "productDesc01", 1, 1.11, 1.11));
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("productLine01");
-		productList.add(new ProductsEntity("productCode02", "productName02", productLine, "productScale02", "productVendor02", "productDesc02", 2, 2.22, 2.22));
+		productList.add(new ProductsEntity("productCode02", "productName02", productLine, "productScale02",
+											"productVendor02", "productDesc02", 2, 2.22, 2.22));
 		productLine = new ProductlinesEntity();
 		LOG.info("Test testFindProductsByCategories() - testFindProductsByCategories to return \n"+ productList.toString());
 		//When
@@ -97,9 +101,10 @@ class ProductServiceTest {
 	void testFindOneProduct() {
 		productLine = new ProductlinesEntity();
 		productLine.setProductLine("product04");
-		ProductsEntity p1 = new ProductsEntity("productCode04", "productName04", productLine, "productScale04", "productVendor04", "productDesc04", 4, 4.44, 4.44);
+		ProductsEntity p1 = new ProductsEntity("productCode04", "productName04", productLine, "productScale04",
+												"productVendor04", "productDesc04", 4, 4.44, 4.44);
 		LOG.info("testFindOneProduct() - findOne('product04') to return " + p1.toString());
-		when(productRepository.findOne("product01")).thenReturn(p1);
+		when(productRepository.findOne("product04")).thenReturn(p1);
 		LOG.info("testFindOneProduct() - findOne('product04') calling");
 		ProductsEntity result = service.find("product04");
 		LOG.info("testFindOneProduct() - Verifying findOne('product04') is called at least once");
