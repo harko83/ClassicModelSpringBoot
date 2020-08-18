@@ -84,7 +84,6 @@ class ProductServiceTest {
 		productLine.setProductLine("productLine01");
 		productList.add(new ProductsEntity("productCode02", "productName02", productLine, "productScale02",
 											"productVendor02", "productDesc02", 2, 2.22, 2.22));
-		productLine = new ProductlinesEntity();
 		LOG.info("Test testFindProductsByCategories() - testFindProductsByCategories to return \n"+ productList.toString());
 		//When
 		when(productRepository.findProductsByCategories("productLine01")).thenReturn(productList);

@@ -34,7 +34,7 @@ function contactValidate(){
 	if(emailRGEX.test(email)){
 		document.getElementById('emailError').innerHTML = "";
 	} else {
-		document.getElementById('emailError').innerHTML = "**Email is invalid*";
+		document.getElementById('emailError').innerHTML = "*Email is invalid";
 		return false;
 	}
 }

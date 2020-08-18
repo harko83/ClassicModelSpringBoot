@@ -226,6 +226,10 @@ footer {
 
 }
 
+.alert{
+	color: red;
+}
+
 /* Flexbox stuff */
 @media screen and (max-width:1024px){
 	.nav-links{

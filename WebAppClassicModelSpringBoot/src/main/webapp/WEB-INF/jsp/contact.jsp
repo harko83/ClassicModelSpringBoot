@@ -41,15 +41,16 @@
                 </div>
                 <div class="six columns noleftmargin">
                		<form:label path="phone">Phone</form:label>
-                	<form:input path="phone" type="text"  class="smoothborder" placeholder="Your phone number *"/>
+                	<form:input path="phone" type="text"  class="smoothborder" placeholder="Your phone number"/>
                 </div>
                 <div class="six columns noleftmargin">
                 	<form:label path="country">Country</form:label>
                 	<form:input path="country" type="text"  class="smoothborder" placeholder="Your country *"/>
                 </div>
                 <div class="six columns">
+                    <span id="emailError" class="alert"></span>
+                    <br/>
                 	<form:label path="email">E-mail address</form:label>
-                	<span id="emailError"></span>
                 	<form:input path="email" id="email" type="text"  class="smoothborder" placeholder="Your e-mail address *"/>
                 </div>
                 <div class="six columns noleftmargin">
