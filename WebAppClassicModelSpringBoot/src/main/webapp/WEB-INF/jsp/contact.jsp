@@ -29,7 +29,7 @@
 			<br/>
             </div>
         </aside>
-        <form:form method="POST" id="contactform" action="/contact/sendMessage" modelAttribute="contactMSG">
+        <form:form method="POST" id="contactform" action="/contact/sendMessage" modelAttribute="contactMSG" onclick="return contactValidate()">
             <div class="form">
                 <div class="six columns noleftmargin">
                		<form:label path="firstname">Name</form:label>
@@ -49,7 +49,8 @@
                 </div>
                 <div class="six columns">
                 	<form:label path="email">E-mail address</form:label>
-                	<form:input path="email" type="text"  class="smoothborder" placeholder="Your e-mail address *"/>
+                	<span id="emailError"></span>
+                	<form:input path="email" id="email" type="text"  class="smoothborder" placeholder="Your e-mail address *"/>
                 </div>
                 <div class="six columns noleftmargin">
                 	<form:label path="object">Object</form:label>

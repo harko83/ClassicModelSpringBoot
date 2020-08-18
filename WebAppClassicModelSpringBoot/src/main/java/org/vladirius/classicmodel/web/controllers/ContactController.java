@@ -29,7 +29,7 @@ public class ContactController {
 		
 		contactService.addMessage(contactEntity);
 		
-		return new ModelAndView("index");
+		return new ModelAndView("redirect:/index");
 	}
 	
 }

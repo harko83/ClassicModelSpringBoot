@@ -68,7 +68,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 //	        .and()
 			.authorizeRequests()
 			.antMatchers("/favicon.ico", "/js/*", "/css/*", "/img/**", "/fonts/*").permitAll()
-			.antMatchers("/", "/contact", "/contact/sendMessage", "/login", "/products", "/products/*").permitAll()
+			.antMatchers("/", "/contact", "/contact/*", "/login", "/products", "/products/*").permitAll()
 			.antMatchers("/employees/global").hasAuthority("ADMIN")
 			.antMatchers("/employees/manager").hasAuthority("SUPEREMPLOYEE")
 			.antMatchers("/client/cart").hasAnyAuthority("CLIENT")
