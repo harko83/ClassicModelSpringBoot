@@ -52,4 +52,16 @@ public class EmployeesService {
 		return reportsToList;
 	}
 
+	//Retrieve employee account
+	public Object getEmployeeAccount(String employeeName) {
+		//Create an empty model
+		EmployeesEntity employee = new EmployeesEntity();
+		
+		//Load user details in the model equals to the logged account
+		employee.setEmployeeNumber(userRepository.getUserByUsername(employeeName).getEmployeeNumber().getEmployeeNumber());
+		
+		//Use employeeNumber to retrieve the account infos
+		return employeeRepository.findById(employee.getEmployeeNumber());
+	}
+
 }

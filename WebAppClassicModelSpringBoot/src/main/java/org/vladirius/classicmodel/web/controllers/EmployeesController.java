@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,12 +24,14 @@ public class EmployeesController {
 	public static final String MANAGER = "/manager";
 	public static final String CLIENT = "/client";
 	public static final String ADDCLIENT = "/addClient";
+	public static final String ACCOUNT = "/account";
 	
 	//JSP
 	public static final String EMPLOYEES = "employees";
 	public static final String ADDEMPLOYEES = "addEmployee";
 	public static final String VCLIENT = "client";
 	public static final String VADDCLIENT = "addClient";
+	public static final String VACCOUNT = "employeeAccount";
 	
 	@Autowired
 	EmployeesService employeesService;
@@ -69,6 +72,14 @@ public class EmployeesController {
 	public ModelAndView displayEmployeesFromManagerOffice(@RequestParam("button") String manager) {
 		ModelAndView mav = new ModelAndView(EMPLOYEES);
 		mav.addObject("employees", employeesService.getManagerEmployeesList(manager));
+		return mav;
+	}
+	
+	//Show employee account
+	@GetMapping(ACCOUNT)
+	public ModelAndView displayEmployeeAccount(@RequestParam("button") String employee) {
+		ModelAndView mav = new ModelAndView(VACCOUNT);
+		mav.addObject("accEmployee", employeesService.getEmployeeAccount(employee));
 		return mav;
 	}
 }

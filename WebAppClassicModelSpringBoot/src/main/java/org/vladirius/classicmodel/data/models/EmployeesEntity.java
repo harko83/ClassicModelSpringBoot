@@ -59,6 +59,10 @@ public class EmployeesEntity implements Serializable{
 	@Column(name = "jobTitle")
 	private String jobTitle;
 	
+	
+	
+	public EmployeesEntity() {}
+
 	public Long getEmployeeNumber() {
 		return employeeNumber;
 	}

@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.vladirius.classicmodel.data.repositories.ProductRepository;
+import org.vladirius.classicmodel.service.ProductsService;
 
 import utilsTests.MvcBaseTest;
 
@@ -21,7 +22,7 @@ class ProductsControllerTest extends MvcBaseTest {
 	final private Logger LOG = LoggerFactory.getLogger(ProductsControllerTest.class);
 	
 	@MockBean
-	ProductRepository productRepositoryMock;
+	ProductsService productServiceMock;
 	
 	private static final String BASE_URL = "/products";
 	
@@ -35,7 +36,7 @@ class ProductsControllerTest extends MvcBaseTest {
 					// Controller forwards to correct view
 					.andExpect(view().name("catalog"))
 					// Set the right model
-					.andExpect(model().attribute("products", productRepositoryMock.findAll()))
+					.andExpect(model().attribute("products", productServiceMock.getProducts()))
 					.andReturn();
 	}
 
@@ -47,7 +48,7 @@ class ProductsControllerTest extends MvcBaseTest {
 					// Controller forwards to correct view
 					.andExpect(view().name("catalog"))
 					// Set the right model
-					.andExpect(model().attribute("products", productRepositoryMock.findProductsByCategories("Classic Cars")))
+					.andExpect(model().attribute("products", productServiceMock.findProductsByCategories("Classic Cars")))
 					.andReturn();
 	}
 

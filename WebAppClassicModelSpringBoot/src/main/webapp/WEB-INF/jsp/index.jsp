@@ -25,14 +25,20 @@
 				
 				<sec:authorize access="hasAuthority('SUPEREMPLOYEE')">
 				<form action="/employees/manager" method="get">
-				<button type="submit" name="button" value="${username}">My office</button>
+					<button type="submit" name="button" value="${username}">My office</button>
 				</form>
-				<a href="http://localhost:8080/client/${username}" > My account </a>
+				<form action="/employees/account" method="get">
+					<button type="submit" name="button" value="${username}">My Account</button>
+				</form>
 				<br>
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('EMPLOYEE')">
 				This content is only shown to EMPLOYEE.
+				<form action="/employees/account" method="get">
+					<button type="submit" name="button" value="${username}">My Account</button>
+				</form>
+				<br>
 				<br>
 				</sec:authorize>
 				
