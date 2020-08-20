@@ -25,9 +25,14 @@ class ProductsControllerTest extends MvcBaseTest {
 	ProductsService productServiceMock;
 	
 	private static final String BASE_URL = "/products";
+	private static final String CATEGORIES = "/cat";
 	
+	/*
+	 * Products()
+	 * should return view catalog and 
+	 * model fill by services.getproducts()
+	 */
 	@Test
-	@DisplayName("Should return view catalog and products list")
 	public void testProducts() throws Exception {
 		// Show the catalog page
 		this.mockMvc.perform(get(BASE_URL))
@@ -40,9 +45,16 @@ class ProductsControllerTest extends MvcBaseTest {
 					.andReturn();
 	}
 
+	/*
+	 * ProductsByCategories()
+	 * receive a parameter and 
+	 * should return view catalog and 
+	 * model fill by services.findProductsByCategories()
+	 */
 	@Test
 	void testProductsByCategories() throws Exception {
-		this.mockMvc.perform(post(BASE_URL+ProductsController.CATEGORIES).param("button", "Classic Cars"))
+		// Show the catalog page and send param by the button
+		this.mockMvc.perform(post(BASE_URL+CATEGORIES).param("button", "Classic Cars"))
 					// HTTP 200 returned
 					.andExpect(status().isOk())
 					// Controller forwards to correct view
