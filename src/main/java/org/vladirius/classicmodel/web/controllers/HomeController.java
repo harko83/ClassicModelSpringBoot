@@ -12,9 +12,4 @@ public class HomeController extends BaseController {
 		return view("index");
 	}
 	
-	@GetMapping("/home")
-	public ModelAndView home() {
-		return view("home");
-	}
-	
 }

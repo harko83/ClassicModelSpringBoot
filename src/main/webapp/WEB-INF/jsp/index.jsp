@@ -1,23 +1,24 @@
-<%@page contentType="text/html" trimDirectiveWhitespaces="true" pageEncoding="UTF-8"%>
-<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" trimDirectiveWhitespaces="true"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 <t:pageTemplate>
-   <jsp:attribute name="additionalCss">
+	<jsp:attribute name="additionalCss">
    </jsp:attribute>
-   <jsp:attribute name="additionalJs">
+	<jsp:attribute name="additionalJs">
    </jsp:attribute>
-   <jsp:body>
-   <div class="wrapper">
-		<section>
-   
-    	<%@ include file="categories.jsp" %>
+	<jsp:body>
+   <div class="IndexContainer">
+    	<%@ include file="categories.jsp"%>
         <aside class="element">
             <div>
 	            <sec:authorize access="isAuthenticated()">
-	            <sec:authentication property="principal.username" var="username" />
+	            <sec:authentication property="principal.username"
+							var="username" />
 				    Welcome Back, ${username}
 				    <br>
 				
@@ -52,7 +53,7 @@
 				  <br>
 				</sec:authorize>
 				
-			<br/>
+			<br />
 			
             <h1>Nos Nouveautés</h1>
             <p id="newItem"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -73,6 +74,7 @@
                 </p>
             </div>
         </article>
+        <br>
         <article class="element">
             <div>
                 <h2 id="intro">Mon test 2 en vert</h2>
@@ -85,7 +87,6 @@
                 </p>
             </div>
         </article>
-    </section>
     </div>
    </jsp:body>
 </t:pageTemplate>

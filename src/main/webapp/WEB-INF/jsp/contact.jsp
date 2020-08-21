@@ -10,7 +10,6 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-		<section>
         <aside class="element">
             <div>
             	<sec:authorize access="!isAuthenticated()">
@@ -30,45 +29,53 @@
             </div>
         </aside>
         <form:form method="POST" id="contactform" action="/contact/sendMessage" modelAttribute="contactMSG" onclick="return contactValidate()">
-            <div class="form">
-                <div class="six columns noleftmargin">
-                    <span id="nameError" class="alert"></span>
-                    <br/>
+            <div class="form ContactGridContainer">
+                <div class="grid-item-r">
                		<form:label path="firstname">Name</form:label>
-                	<form:input path="firstname" id="firstname" type="text"  class="smoothborder" placeholder="Your name *"/>
+               	</div>
+               	<div class="grid-item">	
+                	<form:input path="firstname" id="firstname" type="text" placeholder="Your name *"/>
+                	<span id="nameError" class="alert"></span>
                 </div>
-                <div class="six columns noleftmargin">
-                	<br/>
+                <div class="grid-item-r">
                 	<form:label path="lastname">Lastname</form:label>
-                	<form:input path="lastname" type="text"  class="smoothborder" placeholder="Your lastname *"/>
                 </div>
-                <div class="six columns noleftmargin">
-                	<br/>
+                <div class="grid-item">
+                	<form:input path="lastname" type="text" placeholder="Your lastname *"/>
+                </div>
+                <div class="grid-item-r">
                		<form:label path="phone">Phone</form:label>
-                	<form:input path="phone" type="text"  class="smoothborder" placeholder="Your phone number"/>
+               	</div>
+               	<div class="grid-item">
+                	<form:input path="phone" type="text" placeholder="Your phone number"/>
                 </div>
-                <div class="six columns noleftmargin">
-                	<br/>
+                <div class="grid-item-r">
                 	<form:label path="country">Country</form:label>
-                	<form:input path="country" type="text"  class="smoothborder" placeholder="Your country *"/>
                 </div>
-                <div class="six columns">
-                    <span id="emailError" class="alert"></span>
-                    <br/>
+                <div class="grid-item">
+                	<form:input path="country" type="text" placeholder="Your country *"/>
+                </div>
+                <div class="grid-item-r">
                 	<form:label path="email">E-mail address</form:label>
-                	<form:input path="email" id="email" type="text"  class="smoothborder" placeholder="Your e-mail address *"/>
                 </div>
-                <div class="six columns noleftmargin">
-                	<br/>
+                <div class="grid-item">	
+                	<form:input path="email" id="email" type="text" placeholder="Your e-mail address *"/>
+                	<span id="emailError" class="alert"></span>
+                </div>
+                <div class="grid-item-r">
                 	<form:label path="object">Object</form:label>
-                	<form:input path="object" type="text"  class="smoothborder" placeholder="Object of your message *"/>
                 </div>
-                	<br/>
+                <div class="grid-item"> 	
+                	<form:input path="object" type="text" placeholder="Object of your message *"/>
+                </div>
+                <div class="grid-item-r">	
                 	<form:label path="message">Message</form:label>
-                	<form:textarea path="message" class="smoothborder ctextarea" rows="14" placeholder="New account, feedback, ask your questions *"></form:textarea>
-                <input type="submit" id="submit" class="readmore" value="Send"/>
+                </div>
+                <div class="grid-item">
+                	<form:textarea path="message" rows="14" placeholder="New account, feedback, ask your questions *"></form:textarea>
+                	<input type="submit" id="submit" class="SendContact" value="Send"/>
+                </div>	
             </div>
             </form:form>
-    </section>
    </jsp:body>
 </t:pageTemplate>
