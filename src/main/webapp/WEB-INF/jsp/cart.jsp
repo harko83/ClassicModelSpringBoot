@@ -10,10 +10,8 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-		<section id="IndexContainer">
-
-	<section id="ProductContainer">
-	<form method="post" action="/client/cart/update">
+	<div id="cartContinue">
+	<form method="post" action="/client/cart/update" class="cartContinue">
 		<table cellpadding="2" cellspacing="2" border="1">
 			<tr>
 				<th>Option</th>
@@ -52,10 +50,10 @@
 		</table>
 	</form>
 	<br/>
-	
-	</section>
+	<div class="cartContinue">
 	<a href="/products">Continue Shopping</a>
 	<a href="/client/cart/checkout">Check Out</a>
-	</section>
+	</div>
+	</div>
    </jsp:body>
 </t:pageTemplate>

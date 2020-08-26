@@ -132,8 +132,36 @@ body {
 	display: flex;
     flex-direction: row;
 	margin : 20px auto;
-	align-items: center;	
+	align-items: flex-start;
+	text-align: justify;	
+	width: 100%;
 }
+
+.IndexContainer aside {
+	width: 55%;
+	padding-left: 10px;
+}
+
+.IndexContainer img {
+	width: 60%;
+}
+
+.AccountClientContainer {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+}
+.AccountClientContainer img {
+	align-self: center;
+	width: 15%;
+}
+.AccountClientContainer table {
+	align-self: flex-start;
+	padding: 10px;
+	margin-left: 50px;
+}
+
 
 .ProductContainer {
     display: flex;
@@ -141,6 +169,18 @@ body {
     align-content: space-around;
     overflow : hidden;
 	margin : 20px auto;
+	justify-content: center;
+}
+
+.cartContinue{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.cartContinue a{
+	margin : 10px;
 }
 .ContactGridContainer{
 	display: grid;
@@ -181,7 +221,6 @@ p {
     flex: 1 1 33.3333%;
 }
 
-
 .sale-item {
 	display: flex;
 	flex: 1 1 auto;
@@ -201,6 +240,9 @@ p {
 .sale-item > a {
 	margin-top: auto;
 }
+.card__text{
+	background-color: #cac1c2;
+}
 
 a.button{
   border-radius: 1rem;
@@ -212,12 +254,10 @@ a.button{
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-	
   display: block;
   width:35%;
   text-align: center;
   margin: auto;
-
 }
 
 .leftSide{
@@ -226,7 +266,7 @@ a.button{
 }
 
 .leftSide input{
-	width: 70%;
+	width: 40%;
 	padding: 20px;
 }
 
@@ -263,7 +303,7 @@ footer {
         flex: 0 1 calc(29%);
     }
     .leftSide input{
-	width: 90%;
+	width: 100%;
 	padding: 14px;
 	}
 }
@@ -297,15 +337,26 @@ footer {
         flex: 0 1 calc(45%);
     }
     .leftSide input{
-	width: 100%;
-	padding: 10px;
+		width: 100%;
+		padding: 10px;
 	}
 	.leftSide h3{
-	width: 70%;
+		width: 70%;
 	}
 }
 
 @media screen and (max-width:768px){
+	.IndexContainer aside {
+		width: 100%;
+		padding-left: 10px;
+	}
+	.IndexContainer img{
+   		flex-direction: column;
+   		width: 100%;
+	}
+	.AccountClientContainer {
+		flex-direction: column;
+	}
 	.ProductContainer {
         display: flex;
         flex-wrap: wrap;
@@ -316,14 +367,14 @@ footer {
         flex: 0 1 calc(100%);
     }	
     .leftSide{
-    width: 20%;
+    	width: 20%;
     }
     .leftSide input{
-	width: 100%;
-	padding: 7px;
+		width: 100%;
+		padding: 7px;
 	}
 	.leftSide h3{
-	font-size: 80%;
+		font-size: 80%;
 	}
 }
 

@@ -10,14 +10,10 @@
    <jsp:attribute name="additionalJs">
    </jsp:attribute>
    <jsp:body>
-   			<div class="box">
-   			
-			<section class="account">
-				<div>
-				<img src="${pageContext.request.contextPath}/img/photos/Customers/${client.getName()}.jpg" width="25%"
+   			<div class="AccountClientContainer">
+
+				<img src="${pageContext.request.contextPath}/img/photos/Customers/${client.getName()}.jpg"
 								alt="${client.getCustomerNumber()}">
-				</div>
-				<div>
 					<table>
 						<tr>
 							<th colspan="2">Informations</th>
@@ -68,8 +64,6 @@
 					    	<td><c:out value="${client.getEmployeesEntity().getFirstName()} ${client.getEmployeesEntity().getLastName()}"></c:out></td>
 					    </tr>
 			   		</table>
-	   		</div>
-	   		<div>
 	   			<table>
 	   				<tr>
 	   					<th colspan="2">Orders</th>
@@ -96,8 +90,6 @@
 	   				</tr>
 	   				</c:forEach>
 	   			</table>
-	   		</div>
-	    </section>
 	    </div>
    </jsp:body>
 </t:pageTemplate>

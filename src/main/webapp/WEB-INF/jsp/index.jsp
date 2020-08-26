@@ -12,13 +12,11 @@
 	<jsp:attribute name="additionalJs">
    </jsp:attribute>
 	<jsp:body>
-   <div class="IndexContainer">
-    	<%@ include file="categories.jsp"%>
         <aside class="element">
             <div>
 	            <sec:authorize access="isAuthenticated()">
 	            <sec:authentication property="principal.username"
-							var="username" />
+						var="username" />
 				    Welcome Back, ${username}
 				    <br>
 				
@@ -35,7 +33,7 @@
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('EMPLOYEE')">
-				This content is only shown to EMPLOYEE.
+				<!--This content is only shown to EMPLOYEE.-->
 				<form action="/employees/account" method="get">
 					<button type="submit" name="button" value="${username}">My Account</button>
 				</form>
@@ -49,44 +47,31 @@
 				</sec:authorize>
 				
 				<sec:authorize access="hasAuthority('CLIENT')">
-				  This content is only shown to client.
+				  <!--This content is only shown to client.-->
 				  <br>
 				</sec:authorize>
-				
-			<br />
-			
-            <h1>Nos Nouveautés</h1>
-            <p id="newItem"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation.
-            </p>
             </div>
         </aside>
+        <div class="IndexContainer">
+        <%@ include file="categories.jsp"%>
         <article class="element">
             <div>
-                <h2>Mon test normal</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+                <h2>Welcome to CLassic Models</h2>
+                <p>ClassicModels provides a store full of scale models of cars, trucks, buses, tractors but also tanks, ships, boats, aircraft and helicopters to clients from all over the world.</p>
+                <br>
+                <p>If you need any advice or help on ordering, please do not hesitate to contact us by email or phone. Our experts will answer all your questions and help you navigate through our large range of model miniatures in 1:18 or 1:43 and any other scales. We guarantee total customer satisfaction all the way from ordering to delivery!</p>
+            	<br>
+            	<p>We will be pleased to accept you order in the near future and will do our very best to make it a long-term business with you.</p>
+            	<br>
+            	<p>Large numbers of people have already purchased miniatures with ClassicModels as a gift or for an addition to their precious collection.</p>
+				<br>            
             </div>
         </article>
-        <br>
-        <article class="element">
-            <div>
-                <h2 id="intro">Mon test 2 en vert</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </article>
-    </div>
+         <aside>
+       		<img src="${pageContext.request.contextPath}/img/photos/Products/S12_3990.jpg" alt="S12_3990">
+       		<img src="${pageContext.request.contextPath}/img/photos/Products/S24_2360.jpg" alt="S24_2360">
+       		<img src="${pageContext.request.contextPath}/img/photos/Products/S24_3949.jpg" alt="S24_3949">
+        </aside>
+        </div>
    </jsp:body>
 </t:pageTemplate>

@@ -21,7 +21,7 @@
 									<br/>
 									Référence de l'article :<c:out value=" ${products.getProductCode()}" />
 									<br/>
-									<p class="card__text"><c:out value=" ${products.getProductDescription()}" /></p>
+									<textarea class="card__text" rows="5" cols="50" readonly="readonly"><c:out value=" ${products.getProductDescription()}" /></textarea>
 									<br/>
 									<p>Gamme : <c:out value=" ${products.getProductlinesEntity().getProductLine()}" /></p>
 									<p>Echelle de la maquette au<c:out value=" ${products.getProductScale()}" /></p>
