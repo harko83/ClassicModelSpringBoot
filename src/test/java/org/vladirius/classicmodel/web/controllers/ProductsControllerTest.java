@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.vladirius.classicmodel.data.repositories.ProductRepository;
@@ -21,8 +22,8 @@ class ProductsControllerTest extends MvcBaseTest {
 	
 	final private Logger LOG = LoggerFactory.getLogger(ProductsControllerTest.class);
 	
-	@MockBean
-	ProductsService productServiceMock;
+	@Autowired
+	ProductsService productsService;
 	
 	private static final String BASE_URL = "/products";
 	private static final String CATEGORIES = "/cat";
@@ -41,7 +42,7 @@ class ProductsControllerTest extends MvcBaseTest {
 					// Controller forwards to correct view
 					.andExpect(view().name("catalog"))
 					// Set the right model
-					.andExpect(model().attribute("products", productServiceMock.getProducts()))
+					.andExpect(model().attribute("products", productsService.getProducts()))
 					.andReturn();
 	}
 
@@ -60,7 +61,7 @@ class ProductsControllerTest extends MvcBaseTest {
 					// Controller forwards to correct view
 					.andExpect(view().name("catalog"))
 					// Set the right model
-					.andExpect(model().attribute("products", productServiceMock.findProductsByCategories("Classic Cars")))
+					.andExpect(model().attribute("products", productsService.findProductsByCategories("Classic Cars")))
 					.andReturn();
 	}
 
