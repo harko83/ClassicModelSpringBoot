@@ -18,9 +18,9 @@ import org.vladirius.classicmodel.service.ProductsService;
 
 import utilsTests.MvcBaseTest;
 
-class ProductsControllerTest extends MvcBaseTest {
+class ProductsControllerIT extends MvcBaseTest {
 	
-	final private Logger LOG = LoggerFactory.getLogger(ProductsControllerTest.class);
+	final private Logger LOG = LoggerFactory.getLogger(ProductsControllerIT.class);
 	
 	@Autowired
 	ProductsService productsService;
